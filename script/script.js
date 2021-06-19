@@ -1,15 +1,32 @@
 
 const todoForm = document.querySelector('#todo-form');
 const inputText = document.querySelector('#inputText');
-
+// let objTodo = {};
+// localStorage.setItem ("object", JSON.stringify(objTodo));
+// objectTodo = JSON.parse (localStorage.getItem ("object"));
+// console.log(objectTodo)
 
 let divChild = document.createElement('span');
 
 const handleDelete = (div) => {
     div.remove();
 }
-
+const checkRepeatText = () => {
+    let divCreate = true;
+    let divs = [...document.getElementsByClassName('syka')];
+    divs.forEach(key => {
+        if (inputText.value === key.querySelector('.syka2').innerHTML){
+            divCreate = false;
+        };
+    });
+    return divCreate;
+}
 function handleCreate(){
+    if (!checkRepeatText()){
+        inputText.style.border = '1px solid red';
+        inputText.placeholder = "Одинаковую задачу создать нельзя";
+        return;
+    }
     let div = document.createElement('div');
     div.className = "syka";
     let divChild = document.createElement('span');
@@ -34,7 +51,12 @@ function handleCreate(){
     div.append(divChild);
     div.append(exitButton);  
     exitButton.append(imageExit);
+    // if (localStorage.getItem(getText) === null){
+    // localStorage.setItem(getText,getText);
     
+    // localStorage.getItem('MyKey');
+    // }
+   
 }
 
 todoForm.addEventListener('submit', function(e) {
@@ -54,9 +76,7 @@ todoForm.addEventListener('click', function(e){
         inputText.placeholder = 'New task';
     }
 })
-
-// inputText.addEventListener('focus', function(e) { 
-//     e.target.style.border = '1px solid red'
-// })
-
-
+inputText.addEventListener("input", function(){
+    inputText.style.border = '2px solid #7BA7AB';
+    inputText.placeholder = ' ';
+})
