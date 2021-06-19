@@ -22,7 +22,7 @@ function handleCreate(){
     exitButton.className = "exit";
 
     let imageExit = document.createElement ("IMG");
-    imageExit.setAttribute ("src", "exit.png");
+    imageExit.setAttribute ("src", "image/exit.png");
     imageExit.className = "exit1";
     imageExit.onclick = () => handleDelete(div);
     
