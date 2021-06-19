@@ -5,8 +5,18 @@ const inputText = document.querySelector('#inputText');
 // localStorage.setItem ("object", JSON.stringify(objTodo));
 // objectTodo = JSON.parse (localStorage.getItem ("object"));
 // console.log(objectTodo)
-
 let divChild = document.createElement('span');
+localStorage.setItem(getText, getText);
+const isEmptyLS = () =>{
+    for (key in localStorage){
+        if (!localStorage.hasOwnProperty(key)) {
+            continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
+          }
+        console.log(key);
+        }
+}
+
+
 
 const handleDelete = (div) => {
     div.remove();
@@ -56,7 +66,6 @@ function handleCreate(){
     
     // localStorage.getItem('MyKey');
     // }
-   
 }
 
 todoForm.addEventListener('submit', function(e) {
