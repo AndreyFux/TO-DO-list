@@ -6,20 +6,46 @@ const inputText = document.querySelector('#inputText');
 // objectTodo = JSON.parse (localStorage.getItem ("object"));
 // console.log(objectTodo)
 let divChild = document.createElement('span');
-localStorage.setItem(getText, getText);
 const isEmptyLS = () =>{
     for (key in localStorage){
         if (!localStorage.hasOwnProperty(key)) {
             continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
           }
-        console.log(key);
+          let div = document.createElement('div');
+          div.className = "syka";
+          let divChild = document.createElement('span');
+          divChild.className = "syka2"
+
+          divChild.innerHTML = key;
+      
+          let exitButton = document.createElement('div');
+          exitButton.className = "exit";
+      
+          let imageExit = document.createElement ("IMG");
+          imageExit.setAttribute ("src", "./images/exit.png");
+          imageExit.className = "exit1";
+          imageExit.onclick = () => handleDelete(div);
+          
+      
+          document.body.append(exitButton);
+          document.body.append(imageExit);
+          document.body.append(div);
+          document.body.append(divChild);
+          div.append(divChild);
+          div.append(exitButton);  
+          exitButton.append(imageExit);
         }
 }
+document.addEventListener('DOMContentLoaded', function(){ // Аналог $(document).ready(function(){
+    isEmptyLS();
+  });
 
 
 
 const handleDelete = (div) => {
+    console.log(div);
     div.remove();
+    localStorage.removeItem(div.querySelector('span').innerText);
 }
 const checkRepeatText = () => {
     let divCreate = true;
@@ -49,7 +75,7 @@ function handleCreate(){
     exitButton.className = "exit";
 
     let imageExit = document.createElement ("IMG");
-    imageExit.setAttribute ("src", "../images/exit.png");
+    imageExit.setAttribute ("src", "./images/exit.png");
     imageExit.className = "exit1";
     imageExit.onclick = () => handleDelete(div);
     
@@ -61,8 +87,9 @@ function handleCreate(){
     div.append(divChild);
     div.append(exitButton);  
     exitButton.append(imageExit);
+    
     // if (localStorage.getItem(getText) === null){
-    // localStorage.setItem(getText,getText);
+    localStorage.setItem(getText,getText);
     
     // localStorage.getItem('MyKey');
     // }
